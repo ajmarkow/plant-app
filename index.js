@@ -25,6 +25,6 @@ export const giveLight = changeState("light");
 export const blueFood = changeState("soil")(5);
 export const greenFood = changeState("soil")(10);
 
-const fedPlant = stateControl(blueFood);
+export const fedPlant = stateControl(blueFood);
 // { soil: 5 }
 

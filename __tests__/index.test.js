@@ -1,4 +1,4 @@
-import { changeState, feed, hydrate, giveLight } from "../index.js";
+import { changeState, feed, hydrate, giveLight, fedPlant } from "../index.js";
 
 describe("Should change values of properties using state", () => {
   test("feed should increase soil value", () => {
@@ -15,4 +15,9 @@ describe("Should change values of properties using state", () => {
     let plant = { soil: 0, light: 0, water: 0 };
     expect(giveLight(1)(plant)).toEqual({ light: 1, soil: 0, water: 0 });
   });
+
+  test("to see if the stateControl function is returning an incrementing state", () => {
+    let plant = { soil: 0, light: 0, water: 0 };
+    fedPlant
+  })
 });
