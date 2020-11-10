@@ -1,4 +1,4 @@
-export const storeState = (initialState) => {
+const storeState = (initialState) => {
   let currentState = {initialState};
   return (stateChangeFunction = state => state) => {
     const newState = stateChangeFunction(currentState);
@@ -7,11 +7,11 @@ export const storeState = (initialState) => {
   };
 };
 
-export const stateControl = storeState();
-export const stateControl2 = storeState();
+const stateControl = storeState();
+const stateControl2 = storeState();
 
 
-export const changeState = (prop) => {
+const changeState = (prop) => {
   return (value) => {
     return (state) => ({
       ...state, // {soil: 0, water: 0, light: 0, }
@@ -20,12 +20,12 @@ export const changeState = (prop) => {
   };
 };
 
-export const feed = changeState("soil");
-export const hydrate = changeState("water");
-export const giveLight = changeState("light");
-export const blueFood = changeState("soil")(5);
-export const greenFood = changeState("soil")(10);
-export const hydrateMore = changeState("water")(5);
+const feed = changeState("soil");
+const hydrate = changeState("water");
+const giveLight = changeState("light");
+const blueFood = changeState("soil")(5);
+const greenFood = changeState("soil")(10);
+const hydrateMore = changeState("water")(5);
 
 // export const fedPlant = stateControl(blueFood);
 // export const fedPlantAgain = stateControl(greenFood);
@@ -45,5 +45,10 @@ $(document).ready(function() {
     $('#show-state').click(function() {
       const currentState = stateControl();
       $('#soil-value').text(`Soil: ${currentState.soil}`);
+    });
+
+    $('#water').click(function() {
+      const fedState = stateControl(blueFood);
+      $('#soil-value').text(`Soil: ${newState.soil}`);
     });
   });
