@@ -1,4 +1,4 @@
-import { changeState, feed, hydrate, giveLight, fedPlant } from "../index.js";
+import { changeState, blueFood, greenFood, feed, hydrate, giveLight, fedPlant, fedPlantAgain, storeState, stateControl, stateControl2, hydrateMore} from "../src/index.js";
 
 describe("Should change values of properties using state", () => {
   test("feed should increase soil value", () => {
@@ -16,8 +16,23 @@ describe("Should change values of properties using state", () => {
     expect(giveLight(1)(plant)).toEqual({ light: 1, soil: 0, water: 0 });
   });
 
-  test("to see if the stateControl function is returning an incrementing state", () => {
-    let plant = { soil: 0, light: 0, water: 0 };
-    fedPlant
+  test("stateControl is returning the object params", () => {
+
+    const newfedPlant = stateControl(greenFood);
+    expect(newfedPlant.soil).toEqual(10);
+  })
+
+  test("stateControl is returning the object params", () => {
+    const plant2Fed = stateControl2(greenFood);
+    const newerfedPlant = stateControl(greenFood);
+    expect(newerfedPlant.soil).toEqual(20);
+    expect(plant2Fed.soil).toEqual(10);
+  })
+
+  test("stateControl is returning the object params", () => {
+
+    const plant2FedandWatered = stateControl2(hydrateMore);
+    expect(plant2FedandWatered.soil).toEqual(10);
+    expect(plant2FedandWatered.water).toEqual(5);
   })
 });
